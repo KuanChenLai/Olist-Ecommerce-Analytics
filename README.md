@@ -96,3 +96,11 @@ erDiagram
         datetime review_creation_date
     }
 ```
+## Data Quality Assessment
+         table    rows  columns  missing_values  duplicates
+0    customers   99441        5               0           0
+1       orders   99441        8            4908           0
+2  order_items  112650        7               0           0
+3     products   32951        9            2448           0
+4      sellers    3095        4               0           0
+5      reviews   99224        7          145903           0
