@@ -104,3 +104,73 @@ erDiagram
 3     products   32951        9            2448           0
 4      sellers    3095        4               0           0
 5      reviews   99224        7          145903           0
+
+## Business Analysis
+
+### Top Product Categories by Revenue
+
+     product_category_name       price
+12            beleza_saude  1258681.34
+67      relogios_presentes  1205005.68
+14         cama_mesa_banho  1036988.68
+33           esporte_lazer   988048.97
+45  informatica_acessorios   911954.32
+55        moveis_decoracao   729762.49
+27              cool_stuff   635290.85
+73   utilidades_domesticas   632248.66
+9               automotivo   592720.11
+41      ferramentas_jardim   485256.46
+
+### Key Findings
+
+- Top 10 categories contribute X% of total revenue
+- Category A generates the highest revenue
+- Category B shows strong order volume
+
+## Key Findings
+
+### Revenue Analysis
+
+Top 5 Product Categories
+
+1. Beauty & Health
+2. Watches & Gifts
+3. Bed, Bath & Table
+4. Sports & Leisure
+5. IT Accessories
+
+These categories contribute a significant portion of platform revenue.
+
+## Key Findings
+
+### Revenue Trend
+
+- Revenue grew significantly throughout 2017.
+- Peak revenue occurred in November 2017.
+- Likely driven by Black Friday promotions.
+
+### Product Categories
+
+Top revenue categories:
+
+1. Beauty & Health
+2. Watches & Gifts
+3. Bed, Bath & Table
+
+### Data Quality
+
+- Orders: 4,908 missing values
+- Products: 610 missing category records
+- Reviews: 145,903 missing comment-related fields
+
+## Dashboard
+
+### Executive Overview
+
+![Dashboard](images/dashboard_overview.png)
+
+Key Metrics:
+- Total Revenue
+- Revenue Trend
+- Top Product Categories
+- Top Seller
