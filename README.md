@@ -174,3 +174,5 @@ Key Metrics:
 - Revenue Trend
 - Top Product Categories
 - Top Seller
+# Repeat purchase analysis
+Only 3.0% of customers made repeat purchases. However, repeat customers spent approximately 1.9× more than one-time customers (259.66 vs. 137.60), highlighting the importance of customer retention.
