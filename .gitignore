@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# SQLite Database
+database/*.db
+
+# macOS
+.DS_Store
