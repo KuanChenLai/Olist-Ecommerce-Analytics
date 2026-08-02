@@ -1,12 +1,33 @@
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
+.venv/
+venv/
 
 # Jupyter
 .ipynb_checkpoints/
 
-# SQLite Database
+# SQLite database (rebuilt by etl/etl.py)
 database/*.db
+database/*.db-*
 
-# macOS
+# Local Power BI work and diagnostic exports
+.tools/
+dashboard/live_model_export/
+dashboard/customer_analytics_src/
+dashboard/archive/
+dashboard/*.before_fixes.pbix
+dashboard/*_fixed.pbit
+dashboard/*_redesigned.pbit
+~$*.pbix
+~$*.pbit
+
+# Temporary or duplicate analysis files
+notebooks/* copy.py
+*.tmp
+
+# OS and editor files
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/

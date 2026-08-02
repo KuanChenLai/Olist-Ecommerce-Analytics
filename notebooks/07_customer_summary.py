@@ -13,6 +13,9 @@ orders["order_purchase_timestamp"] = pd.to_datetime(
     orders["order_purchase_timestamp"]
 )
 
+# Keep the customer and revenue KPIs on the same completed-order basis.
+orders = orders.loc[orders["order_status"].eq("delivered")].copy()
+
 order_revenue = (
     fact_orders
     .groupby("order_id")["price"]
@@ -33,15 +36,9 @@ customer_orders = orders_with_revenue.merge(
     how="left"
 )
 
-customer_summary = (
+customer_metrics = (
     customer_orders
-    .groupby(
-        [
-            "customer_unique_id",
-            "customer_state",
-            "customer_city"
-        ]
-    )
+    .groupby("customer_unique_id")
     .agg(
         order_count=("order_id", "nunique"),
         total_spent=("order_value", "sum"),
@@ -51,6 +48,34 @@ customer_summary = (
     )
     .reset_index()
 )
+
+# A customer can use more than one delivery address. Keep the location from the
+# latest order as descriptive data, while retaining exactly one row per person.
+latest_location = (
+    customer_orders
+    .sort_values("order_purchase_timestamp")
+    .drop_duplicates("customer_unique_id", keep="last")
+    [["customer_unique_id", "customer_state", "customer_city"]]
+)
+
+customer_summary = customer_metrics.merge(
+    latest_location,
+    on="customer_unique_id",
+    how="left",
+)
+
+customer_summary = customer_summary[
+    [
+        "customer_unique_id",
+        "customer_state",
+        "customer_city",
+        "order_count",
+        "total_spent",
+        "avg_order_value",
+        "first_order_date",
+        "last_order_date",
+    ]
+]
 
 customer_summary = customer_summary.sort_values(
     "total_spent",

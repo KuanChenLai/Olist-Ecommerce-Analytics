@@ -12,6 +12,10 @@ orders = pd.read_csv(
     RAW_DIR / "olist_orders_dataset.csv"
 )
 
+# Revenue reporting uses completed deliveries only. This prevents cancelled,
+# unavailable, and still-in-progress orders from being counted as revenue.
+orders = orders.loc[orders["order_status"].eq("delivered")].copy()
+
 items = pd.read_csv(
     RAW_DIR / "olist_order_items_dataset.csv"
 )
@@ -41,7 +45,7 @@ fact_orders = (
             ]
         ],
         on="order_id",
-        how="left"
+        how="inner"
     )
     .merge(
         products[
